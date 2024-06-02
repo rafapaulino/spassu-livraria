@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #ededed;
+    width: 100%;
+}
+
+main {
+    margin: 25px 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 300px;
+}
+
+/* sidebar */
+aside {
+    background: #313A46;
+    color: #fff;
+    padding: 25px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+aside h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.3em;
+    margin: 20px 0 10px 0;
+    padding: 0;
+}
+aside h2:first-child {
+    margin-top: 0;
+}
+
+aside h2 i {
+    margin-right: 10px;
+    font-size: 0.8em;
+}
+
+aside ul {
+    font-size: 0.9em;
+    list-style: none;
+}
+
+aside ul li {
+    margin: 5px 0;
+}
+
+aside ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.4s ease-in-out 0s;
+}
+
+aside ul li a:hover {
+    text-decoration: underline;
+    color: #ffff00;
+}
+
+/* livros na home */
+.card-price {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+}
+.card-price a {
+    color: #333;
+    text-decoration: none;
+    transition: all 0.4s ease-in-out 0s;
+}
+.card-price a:hover {
+    color: #000;
+}
+.card-price span {
+    font-size: 18px;
+}
+h3.card-title {
+    line-height: 17px;
+    font-size: 17px;
+}
+h3.card-title a {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+}
+h3.card-title a:hover {
+    text-decoration: underline;
+    color: #000;
+}

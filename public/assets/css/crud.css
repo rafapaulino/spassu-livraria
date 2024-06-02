@@ -1,0 +1,28 @@
+.card-crud h2.card-header {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+    padding: 15px;
+}
+
+.card-crud h2.card-header i {
+    margin-right: 8px;
+}
+
+.btn-action, .btn-submit, .btn-cancel {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+}
+
+.btn-action i, .btn-submit i, .btn-cancel i  {
+    margin-right: 8px;
+}
+
+label {
+    font-family: "Roboto", sans-serif;
+}
+
+label.error {
+    font-weight: bold;
+    color: #FF0000;
+}
