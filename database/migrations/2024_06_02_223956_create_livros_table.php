@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('livros', function (Blueprint $table) {
             $table->id();
             $table->string('titulo', 40);
+            $table->decimal('preco', 10, 2);
             $table->string('editora', 40);
             $table->integer('edicao');
             $table->string('ano_publicacao', 4);

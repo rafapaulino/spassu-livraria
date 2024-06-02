@@ -16,8 +16,19 @@ class Livro extends Model
      */
     protected $fillable = [
         'titulo',
+        'preco',
         'editora',
         'edicao',
         'ano_publicacao'
     ];
+
+    public function autores()
+    {
+        return $this->belongsToMany(Autor::class, 'livro_autor');
+    }
+
+    public function assuntos()
+    {
+        return $this->belongsToMany(Assunto::class, 'livro_assunto');
+    }
 }
