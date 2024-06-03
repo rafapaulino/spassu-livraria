@@ -18,7 +18,8 @@ class IndexController extends Controller
     {
         $autores = $this->service->getAutores();
         $assuntos = $this->service->getAssuntos();
+        $livros = $this->service->getLivros();
 
-        return view('index.home', compact('autores','assuntos'));
+        return view('index.home', compact('autores','assuntos','livros'));
     }
 }

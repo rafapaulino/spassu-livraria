@@ -89,3 +89,7 @@ h3.card-title a:hover {
     text-decoration: underline;
     color: #000;
 }
+
+.page-item, .pagination, .page-link {
+    border-radius: 0 !important;
+}
