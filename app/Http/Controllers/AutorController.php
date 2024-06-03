@@ -98,4 +98,10 @@ class AutorController extends Controller
                 ->with('error', 'Autor não encontrado.');
         }
     }
+
+    public function select2(Request $request)
+    {
+        $json = $this->autorService->select2($request);
+        return response()->json($json);
+    }
 }

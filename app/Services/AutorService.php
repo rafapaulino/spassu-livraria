@@ -16,6 +16,36 @@ class AutorService
         return Autor::orderBy('nome', 'asc')->paginate($total);
     }
 
+    public function select2($request)
+    {
+        $search = $request->input('q');
+        $page = $request->input('page', 1);
+        $perPage = 10;
+
+        $query = Autor::query();
+
+        if ($search) {
+            $query->where('nome', 'like', '%' . $search . '%');
+        }
+
+        $results = $query->paginate($perPage, ['*'], 'page', $page);
+
+        $formattedResults = [];
+        foreach ($results->items() as $autor) {
+            $formattedResults[] = [
+                'id' => $autor->id,
+                'text' => $autor->nome,
+            ];
+        }
+
+        return [
+            'results' => $formattedResults,
+            'pagination' => [
+                'more' => $results->hasMorePages(),
+            ],
+        ];
+    }
+
     public function store($request)
     {
         Autor::create($request->all());

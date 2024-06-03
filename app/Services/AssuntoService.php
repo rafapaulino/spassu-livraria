@@ -16,6 +16,36 @@ class AssuntoService
         return Assunto::orderBy('descricao', 'asc')->paginate($total);
     }
 
+    public function select2($request)
+    {
+        $search = $request->input('q');
+        $page = $request->input('page', 1);
+        $perPage = 10;
+
+        $query = Assunto::query();
+
+        if ($search) {
+            $query->where('descricao', 'like', '%' . $search . '%');
+        }
+
+        $results = $query->paginate($perPage, ['*'], 'page', $page);
+
+        $formattedResults = [];
+        foreach ($results->items() as $assunto) {
+            $formattedResults[] = [
+                'id' => $assunto->id,
+                'text' => $assunto->descricao,
+            ];
+        }
+
+        return [
+            'results' => $formattedResults,
+            'pagination' => [
+                'more' => $results->hasMorePages(),
+            ],
+        ];
+    }
+
     public function store($request)
     {
         Assunto::create($request->all());

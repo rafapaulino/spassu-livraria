@@ -25,8 +25,8 @@ class LivroRequest extends FormRequest
             'titulo' => 'required|string|max:40',
             'editora' => 'required|string|max:40',
             'edicao' => 'required|integer',
-            'ano_publicacao' => 'required|integer|max:4|min:4',
-            'preco' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'ano_publicacao' => 'required|digits:4',
+            'preco' => 'required',
         ];
     }
 
@@ -40,12 +40,8 @@ class LivroRequest extends FormRequest
             'edicao.required' => 'A edição é obrigatória.',
             'edicao.numeric' => 'A edição deve ser um número inteiro.',
             'ano_publicacao.required' => 'O ano de publicação é obrigatório.',
-            'ano_publicacao.numeric' => 'O ano de publicação deve ser um número inteiro.',
-            'ano_publicacao.max' => 'O ano de publicação deve ter no máximo 4 caracteres.',
-            'ano_publicacao.min' => 'O ano de publicação deve ser no mínimo 4 caracteres.',
-            'preco.required' => 'O preço é obrigatório.',
-            'preco.numeric' => 'O preço deve ser um número.',
-            'preco.regex' => 'O preço deve ser um número decimal com até duas casas decimais.',
+            'ano_publicacao.digits' => 'O ano de publicação deve ter 4 caracteres.',
+            'preco.required' => 'O preço é obrigatório.'
         ];
     }
 }

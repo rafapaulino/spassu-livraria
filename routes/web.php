@@ -18,6 +18,8 @@ use App\Http\Controllers\LivroController;
 */
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/assunto/select2', [AssuntoController::class, 'select2'])->name('assunto.select2');
+Route::get('/autor/select2', [AutorController::class, 'select2'])->name('autor.select2');
 Route::resource('assunto', AssuntoController::class);
 Route::resource('autor', AutorController::class);
 Route::resource('livro', LivroController::class);

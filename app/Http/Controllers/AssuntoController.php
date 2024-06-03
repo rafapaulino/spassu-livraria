@@ -98,4 +98,11 @@ class AssuntoController extends Controller
                 ->with('error', 'Assunto não encontrado.');
         }
     }
+
+
+    public function select2(Request $request)
+    {
+        $json = $this->assuntoService->select2($request);
+        return response()->json($json);
+    }
 }

@@ -45,6 +45,7 @@ class Livro extends Model
     {
         return Attribute::make(
             get: fn (string $value) => number_format($value, 2, ',', '.'),
+            set: fn (string $value) => str_replace(',', '.', $value),
         );
     }
 }
