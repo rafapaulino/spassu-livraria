@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AssuntoRequest;
 use App\Services\AssuntoService;
 
 class AssuntoController extends Controller
@@ -25,15 +26,18 @@ class AssuntoController extends Controller
      */
     public function create()
     {
-        //
+        return view('assunto.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AssuntoRequest $request)
     {
-        //
+        $this->assuntoService->store($request);
+        
+        return redirect()->route('assunto.index')
+                         ->with('success', 'Assunto criado com sucesso.');
     }
 
     /**

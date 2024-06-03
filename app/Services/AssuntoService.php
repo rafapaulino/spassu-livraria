@@ -16,6 +16,11 @@ class AssuntoService
         return Assunto::orderBy('descricao', 'asc')->paginate($total);
     }
 
+    public function store($request)
+    {
+        Assunto::create($request->all());
+    }
+
     public function destroy($id)
     {
         $assunto = Assunto::find($id);
