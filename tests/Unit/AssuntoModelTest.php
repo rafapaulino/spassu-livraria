@@ -9,10 +9,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class AssuntoModelTest extends TestCase
 {
     use RefreshDatabase;
-    
+
     public function test_assunto_create(): void
     {
-        $assunto = Assunto::factory()->create([
+        Assunto::factory()->create([
             'descricao' => 'Teste'
         ]);
 

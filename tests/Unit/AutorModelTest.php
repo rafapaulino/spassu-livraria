@@ -12,7 +12,7 @@ class AutorModelTest extends TestCase
     
     public function test_autor_create(): void
     {
-        $autor = Autor::factory()->create([
+        Autor::factory()->create([
             'nome' => 'Teste'
         ]);
 
