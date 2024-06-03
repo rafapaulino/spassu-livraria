@@ -8,6 +8,6 @@
 
     <h2><i class="fa-solid fa-eye"></i> Relatórios</h2>
     <ul>
-        <li><a href="" title="Susan McDonald">Relatório</a></li>
+        <li><a href="{{ route('relatorio.index') }}" title="Relatório" target="_blank">Relatório Autores X Livros (PDF)</a></li>
     </ul>
 </aside>

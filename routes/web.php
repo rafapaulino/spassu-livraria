@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AssuntoController;
 use App\Http\Controllers\AutorController;
 use App\Http\Controllers\LivroController;
+use App\Http\Controllers\RelatorioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Controllers\LivroController;
 */
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/relatorio', [RelatorioController::class, 'index'])->name('relatorio.index');
 Route::get('/assunto/select2', [AssuntoController::class, 'select2'])->name('assunto.select2');
 Route::get('/autor/select2', [AutorController::class, 'select2'])->name('autor.select2');
 Route::resource('assunto', AssuntoController::class);
