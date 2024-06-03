@@ -3,22 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\IndexService;
+use App\Services\LivroService;
+use App\Services\AssuntoService;
+use App\Services\AutorService;
 
 class IndexController extends Controller
 {
-    protected $service;
-
-    public function __construct(IndexService $service)
-    {
-        $this->service = $service;
-    }
+    public function __construct(
+        public AssuntoService $assuntoService,
+        public AutorService $autorService,
+        public LivroService $livroService
+    ) { }
 
     public function index()
     {
-        $autores = $this->service->getAutores();
-        $assuntos = $this->service->getAssuntos();
-        $livros = $this->service->getLivros();
+        $autores = $this->autorService->get();
+        $assuntos = $this->assuntoService->get();
+        $livros = $this->livroService->list(6);
 
         return view('index.home', compact('autores','assuntos','livros'));
     }

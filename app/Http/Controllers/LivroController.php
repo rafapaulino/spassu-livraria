@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\LivroService;
 
 class LivroController extends Controller
 {
+    public function __construct(
+        public LivroService $livroService
+    ) { }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $livros = $this->livroService->list(10);
+        return view('livro.index', compact('livros'));
     }
 
     /**
@@ -59,6 +65,9 @@ class LivroController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->livroService->destroy($id);
+
+        return redirect()->route('livro.index')
+                         ->with('success', 'Livro deletado com sucesso.');
     }
 }

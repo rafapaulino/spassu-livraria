@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\AutorService;
 
 class AutorController extends Controller
 {
+    public function __construct(
+        public AutorService $autorService
+    ) { }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $autores = $this->autorService->list(10);
+        return view('autor.index', compact('autores'));
     }
 
     /**
@@ -59,6 +65,9 @@ class AutorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->autorService->destroy($id);
+
+        return redirect()->route('autor.index')
+                         ->with('success', 'Autor deletado com sucesso.');
     }
 }

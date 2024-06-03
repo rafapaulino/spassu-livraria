@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\AssuntoService;
 
 class AssuntoController extends Controller
 {
+    public function __construct(
+        public AssuntoService $assuntoService
+    ) { }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $assuntos = $this->assuntoService->list(10);
+        return view('assunto.index', compact('assuntos'));
     }
 
     /**
@@ -59,6 +65,9 @@ class AssuntoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->assuntoService->destroy($id);
+
+        return redirect()->route('assunto.index')
+                         ->with('success', 'Assunto deletado com sucesso.');
     }
 }

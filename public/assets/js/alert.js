@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    const links = document.querySelectorAll('.btn-danger');
+    const forms = document.querySelectorAll('.form-destroy');
 
-    links.forEach(link => {
-        link.addEventListener('click', (event) => {
+    forms.forEach(form => {
+        form.addEventListener('submit', (event) => {
             event.preventDefault();
-            const href = link.getAttribute('href');
+            const formObj = event.target;
+
             
             Swal.fire({
                 title: "Você tem certeza?",
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 confirmButtonText: "Sim, delete este item!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location = href;
+                    formObj.submit();
                 }
                 return false;
             });
