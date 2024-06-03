@@ -6,7 +6,7 @@
             </div>
             <div class="col-6 d-flex justify-content-center justify-content-md-end">
                 <ul class="nav">
-                    <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">Página Inicial</a></li>
+                    <li class="nav-item"><a href="{{ route('index') }}" class="nav-link px-2 link-dark">Página Inicial</a></li>
                     <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">Quem Somos</a></li>
                     <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">Política de Privacidade</a></li>
                     <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>

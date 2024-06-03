@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-start">
-                <a href="" title="Livraria Spassu" class="d-inline-block">
+                <a href="{{ route('index') }}" title="Livraria Spassu" class="d-inline-block">
                     <img src="{{ asset('assets/img/logo-spassu.svg') }}" class="logo">
                 </a>
             </div>
@@ -15,7 +15,7 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="nav-item px-2">
-                                    <a class="nav-link active" aria-current="page" href="#">Página Inicial</a>
+                                    <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Página Inicial</a>
                                 </li>
                                 <li class="nav-item px-2">
                                     <a class="nav-link" href="#">Quem Somos</a>
