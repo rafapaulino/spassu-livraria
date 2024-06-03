@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\AutorService;
+use App\Http\Requests\AutorRequest;
+use Exception;
 
 class AutorController extends Controller
 {
@@ -25,15 +27,18 @@ class AutorController extends Controller
      */
     public function create()
     {
-        //
+        return view('autor.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AutorRequest $request)
     {
-        //
+        $this->autorService->store($request);
+
+        return redirect()->route('autor.index')
+                         ->with('success', 'O autor foi criado com sucesso.');
     }
 
     /**
@@ -49,15 +54,32 @@ class AutorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        try {
+            
+            $autor = $this->autorService->find($id);
+            return view('autor.edit', compact('autor'));
+        
+        } catch (Exception $e) {
+            return redirect()->route('autor.index')
+                ->with('error', 'Autor não encontrado.');
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AutorRequest $request, string $id)
     {
-        //
+        try {
+
+            $this->autorService->update($request, $id);
+            return redirect()->route('autor.index')
+                            ->with('success', 'O autor foi atualizado com sucesso.');
+
+        } catch (Exception $e) {
+            return redirect()->route('autor.index')
+                ->with('error', 'Autor não encontrado.');
+        }
     }
 
     /**
@@ -65,9 +87,15 @@ class AutorController extends Controller
      */
     public function destroy(string $id)
     {
-        $this->autorService->destroy($id);
+        try {
+            $this->autorService->destroy($id);
 
-        return redirect()->route('autor.index')
-                         ->with('success', 'Autor deletado com sucesso.');
+            return redirect()->route('autor.index')
+                ->with('success', 'O autor foi deletado com sucesso.');
+
+        } catch (Exception $e) {
+            return redirect()->route('autor.index')
+                ->with('error', 'Autor não encontrado.');
+        }
     }
 }

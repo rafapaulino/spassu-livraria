@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AssuntoRequest extends FormRequest
+class AutorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class AssuntoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'descricao' => 'required|string|max:20',
+            'nome' => 'required|string|max:40',
         ];
     }
 
@@ -34,8 +34,8 @@ class AssuntoRequest extends FormRequest
     public function messages()
     {
         return [
-            'descricao.required' => 'O assunto é obrigatório.',
-            'descricao.max' => 'O assunto pode ter no máximo 20 caracteres.',
+            'nome.required' => 'O autor é obrigatório.',
+            'nome.max' => 'O autor pode ter no máximo 40 caracteres.',
         ];
     }
 }

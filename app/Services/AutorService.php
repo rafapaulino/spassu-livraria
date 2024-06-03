@@ -16,9 +16,25 @@ class AutorService
         return Autor::orderBy('nome', 'asc')->paginate($total);
     }
 
+    public function store($request)
+    {
+        Autor::create($request->all());
+    }
+
+    public function find($id)
+    {
+        return Autor::findOrFail($id);
+    }
+
+    public function update($request, $id)
+    {
+        $autor = $this->find($id);
+        $autor->update($request->all());
+    }
+
     public function destroy($id)
     {
-        $autor = Autor::find($id);
+        $autor = $this->find($id);
         $autor->delete();
     }
 }

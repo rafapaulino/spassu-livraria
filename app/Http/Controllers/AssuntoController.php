@@ -38,7 +38,7 @@ class AssuntoController extends Controller
         $this->assuntoService->store($request);
 
         return redirect()->route('assunto.index')
-                         ->with('success', 'Assunto criado com sucesso.');
+                         ->with('success', 'O assunto foi criado com sucesso.');
     }
 
     /**
@@ -74,7 +74,7 @@ class AssuntoController extends Controller
 
             $this->assuntoService->update($request, $id);
             return redirect()->route('assunto.index')
-                            ->with('success', 'Assunto foi atualizado com sucesso.');
+                            ->with('success', 'O assunto foi atualizado com sucesso.');
 
         } catch (Exception $e) {
             return redirect()->route('assunto.index')
@@ -91,7 +91,7 @@ class AssuntoController extends Controller
             $this->assuntoService->destroy($id);
 
             return redirect()->route('assunto.index')
-                ->with('success', 'Assunto deletado com sucesso.');
+                ->with('success', 'O assunto foi deletado com sucesso.');
 
         } catch (Exception $e) {
             return redirect()->route('assunto.index')
