@@ -23,6 +23,9 @@ class LivroService
 
     public function attachAssunto($livro, $request)
     {
+        //remove os relacionamentos existentes
+        $livro->assuntos()->sync([]);
+
         foreach ($request->input('assuntos') as $assunto)
         {
             if (is_numeric($assunto)) {
@@ -36,6 +39,9 @@ class LivroService
 
     public function attachAutor($livro, $request)
     {
+        //remove os relacionamentos existentes
+        $livro->autores()->sync([]);
+
         foreach ($request->input('autores') as $autor)
         {
             if (is_numeric($autor)) {
@@ -54,13 +60,16 @@ class LivroService
 
     public function update($request, $id)
     {
-        $assunto = $this->find($id);
-        $assunto->update($request->all());
+        $livro = $this->find($id);
+        $livro->update($request->all());
+
+        $this->attachAssunto($livro, $request);
+        $this->attachAutor($livro, $request);
     }
 
     public function destroy($id)
     {
-        $assunto = $this->find($id);
-        $assunto->delete();
+        $livro = $this->find($id);
+        $livro->delete();
     }
 }

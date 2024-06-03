@@ -87,17 +87,17 @@
     </div>
 
     @push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js" integrity="sha512-RtZU3AyMVArmHLiW0suEZ9McadTdegwbgtiQl5Qqo9kunkVg1ofwueXD8/8wv3Af8jkME3DDe3yLfR8HSJfT2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{{ asset('assets/js/select2.js?src=0') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-mask-money@4.1.3/lib/simple-mask-money.umd.min.js"></script>
-    <script>
-        const price = SimpleMaskMoney.setMask('#preco');
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js" integrity="sha512-RtZU3AyMVArmHLiW0suEZ9McadTdegwbgtiQl5Qqo9kunkVg1ofwueXD8/8wv3Af8jkME3DDe3yLfR8HSJfT2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="{{ asset('assets/js/select2.js?src=0') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-mask-money@4.1.3/lib/simple-mask-money.umd.min.js"></script>
+        <script>
+            const price = SimpleMaskMoney.setMask('#preco');
 
-        $("form.form-validate").validate({
-            submitHandler: function(form) {
-              form.submit();
-            }
-        });
-    </script>
+            $("form.form-validate").validate({
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        </script>
     @endpush
 @endsection
