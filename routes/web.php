@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\AssuntoController;
+use App\Http\Controllers\AutorController;
+use App\Http\Controllers\LivroController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +18,7 @@ use App\Http\Controllers\IndexController;
 */
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::resource('assunto', AssuntoController::class);
+Route::resource('autor', AutorController::class);
+Route::resource('livro', LivroController::class);
+

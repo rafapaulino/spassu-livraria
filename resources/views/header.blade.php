@@ -27,7 +27,7 @@
                                     <a class="nav-link" href="#">Contato</a>
                                 </li>
                             </ul>
-                            <a href="" class="btn btn-primary rounded-0 mx-2"><i class="fa-solid fa-user-shield"></i> Cadastrar</a>
+                            <a href="{{ route('assunto.index') }}" class="btn btn-primary rounded-0 mx-2"><i class="fa-solid fa-user-shield"></i> Cadastrar</a>
                         </div>
                     </div>
                 </nav>
