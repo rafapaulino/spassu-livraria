@@ -4,6 +4,8 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use App\Models\Livro;
+use App\Models\Assunto;
+use App\Models\Autor;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class LivroModelTest extends TestCase
@@ -67,5 +69,25 @@ class LivroModelTest extends TestCase
         $livro->delete();
 
         $this->assertModelMissing($livro);
+    }
+
+    public function test_add_assunto_to_livro()
+    {
+        $livro = Livro::factory()->create();
+        $assunto = Assunto::factory()->create();
+
+        $livro->assuntos()->attach($assunto);
+
+        $this->assertTrue($livro->assuntos->contains($assunto));
+    }
+
+    public function test_add_autor_to_livro()
+    {
+        $livro = Livro::factory()->create();
+        $autor = Autor::factory()->create();
+
+        $livro->autores()->attach($autor);
+
+        $this->assertTrue($livro->autores->contains($autor));
     }
 }
