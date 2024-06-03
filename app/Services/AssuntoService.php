@@ -21,9 +21,20 @@ class AssuntoService
         Assunto::create($request->all());
     }
 
+    public function find($id)
+    {
+        return Assunto::find($id);
+    }
+
+    public function update($request, $id)
+    {
+        $assunto = $this->find($id);
+        $assunto->update($request->all());
+    }
+
     public function destroy($id)
     {
-        $assunto = Assunto::find($id);
+        $assunto = $this->find($id);
         $assunto->delete();
     }
 }

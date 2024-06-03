@@ -35,7 +35,7 @@ class AssuntoController extends Controller
     public function store(AssuntoRequest $request)
     {
         $this->assuntoService->store($request);
-        
+
         return redirect()->route('assunto.index')
                          ->with('success', 'Assunto criado com sucesso.');
     }
@@ -53,15 +53,19 @@ class AssuntoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $assunto = $this->assuntoService->find($id);
+        return view('assunto.edit', compact('assunto'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AssuntoRequest $request, string $id)
     {
-        //
+        $this->assuntoService->update($request, $id);
+
+        return redirect()->route('assunto.index')
+                         ->with('success', 'Assunto foi atualizado com sucesso.');
     }
 
     /**
