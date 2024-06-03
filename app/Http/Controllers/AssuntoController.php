@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\AssuntoRequest;
 use App\Services\AssuntoService;
+use Exception;
 
 class AssuntoController extends Controller
 {
@@ -53,8 +54,15 @@ class AssuntoController extends Controller
      */
     public function edit(string $id)
     {
-        $assunto = $this->assuntoService->find($id);
-        return view('assunto.edit', compact('assunto'));
+        try {
+            
+            $assunto = $this->assuntoService->find($id);
+            return view('assunto.edit', compact('assunto'));
+        
+        } catch (Exception $e) {
+            return redirect()->route('assunto.index')
+                ->with('error', 'Assunto não encontrado.');
+        }
     }
 
     /**
@@ -62,10 +70,16 @@ class AssuntoController extends Controller
      */
     public function update(AssuntoRequest $request, string $id)
     {
-        $this->assuntoService->update($request, $id);
+        try {
 
-        return redirect()->route('assunto.index')
-                         ->with('success', 'Assunto foi atualizado com sucesso.');
+            $this->assuntoService->update($request, $id);
+            return redirect()->route('assunto.index')
+                            ->with('success', 'Assunto foi atualizado com sucesso.');
+
+        } catch (Exception $e) {
+            return redirect()->route('assunto.index')
+                ->with('error', 'Assunto não encontrado.');
+        }
     }
 
     /**
@@ -73,9 +87,15 @@ class AssuntoController extends Controller
      */
     public function destroy(string $id)
     {
-        $this->assuntoService->destroy($id);
+        try {
+            $this->assuntoService->destroy($id);
 
-        return redirect()->route('assunto.index')
-                         ->with('success', 'Assunto deletado com sucesso.');
+            return redirect()->route('assunto.index')
+                ->with('success', 'Assunto deletado com sucesso.');
+
+        } catch (Exception $e) {
+            return redirect()->route('assunto.index')
+                ->with('error', 'Assunto não encontrado.');
+        }
     }
 }

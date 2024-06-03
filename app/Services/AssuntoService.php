@@ -23,7 +23,7 @@ class AssuntoService
 
     public function find($id)
     {
-        return Assunto::find($id);
+        return Assunto::findOrFail($id);
     }
 
     public function update($request, $id)

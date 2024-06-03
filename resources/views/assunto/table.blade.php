@@ -1,5 +1,6 @@
 <section class="col-12 col-md-9 my-5 m-md-0">
     <div class="container">
+        
         @if (session('success'))
             <div class="row">
                 <div class="col-12">
@@ -10,6 +11,18 @@
                 </div>
             </div>
         @endif
+
+        @if(session('error'))
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-danger alert-dismissible fade show rounded-0 my-2" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <div class="row mb-2">
             <div class="col-12">
                 <div class="card rounded-0 card-crud">
