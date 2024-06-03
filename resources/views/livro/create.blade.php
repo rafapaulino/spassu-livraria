@@ -60,12 +60,12 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-12 col-md-6 mb-3">
-                                                <label for="assunto" class="form-label">Assunto</label>
-                                                <select class="form-select rounded-0 select-select2" multiple name="assunto" name="assunto" id="assunto" required data-source="{{ route('assunto.select2') }}"></select>
+                                                <label for="assuntos" class="form-label">Assunto</label>
+                                                <select class="form-select rounded-0 select-select2" multiple name="assuntos[]" id="assuntos" required data-source="{{ route('assunto.select2') }}"></select>
                                             </div>
                                             <div class="col-12 col-md-6 mb-3">
                                                 <label for="autores" class="form-label">Autor(es)</label>
-                                                <select class="form-select rounded-0 select-select2" multiple name="autores" id="autores" required data-source="{{ route('autor.select2') }}"></select>
+                                                <select class="form-select rounded-0 select-select2" multiple name="autores[]" id="autores" required data-source="{{ route('autor.select2') }}"></select>
                                             </div>
                                         </div>
                                         <div class="row">

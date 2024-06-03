@@ -27,6 +27,8 @@ class LivroRequest extends FormRequest
             'edicao' => 'required|integer',
             'ano_publicacao' => 'required|digits:4',
             'preco' => 'required',
+            'assuntos' => 'required|array',
+            'autores' => 'required|array',
         ];
     }
 
@@ -41,7 +43,9 @@ class LivroRequest extends FormRequest
             'edicao.numeric' => 'A edição deve ser um número inteiro.',
             'ano_publicacao.required' => 'O ano de publicação é obrigatório.',
             'ano_publicacao.digits' => 'O ano de publicação deve ter 4 caracteres.',
-            'preco.required' => 'O preço é obrigatório.'
+            'preco.required' => 'O preço é obrigatório.',
+            'assuntos.required' => 'O assunto é obrigatório.',
+            'autores.required' => 'O autor é obrigatório.',
         ];
     }
 }

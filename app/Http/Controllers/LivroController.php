@@ -35,7 +35,6 @@ class LivroController extends Controller
      */
     public function store(LivroRequest $request)
     {
-        dd($request->all());
 
         $this->livroService->store($request);
 

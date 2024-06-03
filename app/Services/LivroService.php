@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\Livro;
+use App\Models\Autor;
+use App\Models\Assunto;
 
 class LivroService
 {
@@ -13,7 +15,36 @@ class LivroService
 
     public function store($request)
     {
-        Livro::create($request->all());
+        $livro = Livro::create($request->all());
+
+        $this->attachAssunto($livro, $request);
+        $this->attachAutor($livro, $request);
+    }
+
+    public function attachAssunto($livro, $request)
+    {
+        foreach ($request->input('assuntos') as $assunto)
+        {
+            if (is_numeric($assunto)) {
+                $livro->assuntos()->attach($assunto);
+            } else {
+                $novoAssunto = Assunto::create(['descricao' => $assunto]);
+                $livro->assuntos()->attach($novoAssunto->id);
+            }
+        }
+    }
+
+    public function attachAutor($livro, $request)
+    {
+        foreach ($request->input('autores') as $autor)
+        {
+            if (is_numeric($autor)) {
+                $livro->autores()->attach($autor);
+            } else {
+                $novoAutor = Autor::create(['nome' => $autor]);
+                $livro->autores()->attach($novoAutor->id);
+            }
+        }
     }
 
     public function find($id)
